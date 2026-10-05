@@ -10,6 +10,8 @@ if (localStorage.getItem('leads')){
     render()
 }
 
+let tab=[{url:'www.ihsan.com'}]
+
 saveBtn.addEventListener('click',function(){
     let inn=inputel.value
     leads.push(inn)
@@ -18,11 +20,24 @@ saveBtn.addEventListener('click',function(){
     console.log(localStorage)
     leads=JSON.parse(localStorage.getItem('leads'))
     render()
-
     inputel.value=''
 
 })
 
+tabBtn.addEventListener('click',function(){
+    leads.push(tab[0].url)
+    leads=JSON.stringify(leads)
+    localStorage.setItem('leads',leads)
+    leads=JSON.parse(leads)
+    render()
+})
+
+
+deleteBtn.addEventListener('click',function(){
+    localStorage.clear()
+    leads=[]
+    ull.innerHTML=''
+})
 
 function render(){
     let list=''
